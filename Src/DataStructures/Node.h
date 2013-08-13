@@ -10,8 +10,7 @@
 
 #include <cstdlib>
 
-
-template <class T>
+template<class T>
 class Node
 {
 public:
@@ -20,21 +19,24 @@ public:
 		obj = NULL;
 		next = NULL;
 		prev = NULL;
-	};
+	}
+	;
 
 	Node(T *_obj)
 	{
 		obj = _obj;
 		next = NULL;
 		prev = NULL;
-	};
+	}
+	;
 
 	Node(T *_obj, Node<T> *_prev)
 	{
 		obj = _obj;
 		prev = _prev;
 		next = NULL;
-	};
+	}
+	;
 
 	Node(T *_obj, Node<T> *_prev, Node<T> *_next)
 	{
@@ -46,13 +48,11 @@ public:
 	~Node(void)
 	{
 
-	};
+	}
 
-	// TODO make private
 	T *obj;
 	Node<T> *next;
 	Node<T> *prev;
 };
-
 
 #endif /* NODE_H_ */

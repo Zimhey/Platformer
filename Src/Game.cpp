@@ -9,22 +9,45 @@
 
 Game::Game()
 {
-	// TODO Auto-generated constructor stub
-	objects = 0;
-	player.setX(640);
-	player.setY(360);
-	player.setWidth(64);
-	player.setHeight(128);
+	objects = NULL;
+	Obj *floor = new Obj(0, 620, 1280, 720);
+	Entity *player = new Entity(640, 360, 64, 128);
+	addObj(floor);
+	addObj(player);
 }
 
 Game::~Game()
 {
-	// TODO Auto-generated destructor stub
+	while(objects != NULL)
+	{
+		Node<Obj> *del = objects;
+		delete del->obj;
+		objects = objects->next;
+		delete del;
+	}
 }
 
 void Game::loop()
 {
-	if(player.getY() + player.getHeight() < 620)
-		player.setY(player.getY() + 1);
-	player.draw();
+
+	Node<Obj> *traverseP = objects;
+	while(traverseP != NULL)
+	{
+		traverseP->obj->tick();
+		traverseP->obj->draw();
+		traverseP = traverseP->next;
+	}
+}
+
+void Game::addObj(Obj *obj)
+{
+	if(objects == NULL)
+	{
+		objects = new Node<Obj>(obj);
+		return;
+	}
+	objects->prev = new Node<Obj>(obj);
+	objects->prev->next = objects;
+	objects = objects->prev;
+
 }

@@ -9,12 +9,80 @@
 
 Entity::Entity()
 {
-	// TODO Auto-generated constructor stub
+	x = y = z = width = height = 0;
+	health = 1;
+	alive = true;
+}
 
+Entity::Entity(float x, float y)
+{
+	this->x = x;
+	this->y = y;
+	z = width = height = 0;
+	health = 1;
+	alive = true;
+}
+
+Entity::Entity(float x, float y, float z)
+{
+	this->x = x;
+	this->y = y;
+	this->z = z;
+	width = height = 0;
+	health = 1;
+	alive = true;
+}
+
+Entity::Entity(float x, float y, float width, float height)
+{
+	this->x = x;
+	this->y = y;
+	this->width = width;
+	this->height = height;
+	z = 0;
+	health = 1;
+	alive = true;
+}
+
+Entity::Entity(float x, float y, float z, float width, float height)
+{
+	this->x = x;
+	this->y = y;
+	this->z = z;
+	this->width = width;
+	this->height = height;
+	health = 1;
+	alive = true;
+}
+
+Entity::Entity(float x, float y, float z, float width, float height, int health)
+{
+	this->x = x;
+	this->y = y;
+	this->z = z;
+	this->width = width;
+	this->height = height;
+	this->health = health;
+	alive = true;
 }
 
 Entity::~Entity()
 {
-	// TODO Auto-generated destructor stub
+
 }
 
+int Entity::getHealth() const
+{
+	return health;
+}
+
+void Entity::setHealth(int health)
+{
+	this->health = health;
+}
+
+void Entity::tick()
+{
+	if(health < 1)
+		alive = false;
+}

@@ -48,7 +48,6 @@ Obj::Obj(float x, float y, float z, float width, float height)
 
 Obj::~Obj()
 {
-	// TODO Auto-generated destructor stub
 }
 
 float Obj::getHeight() const
@@ -137,4 +136,9 @@ void Obj::drawDebug()
 
 	glEnd();
 	glPopMatrix();
+}
+
+void Obj::tick()
+{
+
 }

@@ -26,7 +26,6 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action,
 int main(void)
 {
 	GLFWwindow* window;
-	Obj floor(0, 620, 1280, 720);
 	Game game;
 
 	glfwSetErrorCallback(error_callback);
@@ -34,7 +33,7 @@ int main(void)
 	if (!glfwInit())
 		exit(EXIT_FAILURE);
 
-	window = glfwCreateWindow(1280, 720, "plzkthx studios: platformer", NULL, NULL);
+	window = glfwCreateWindow(1280, 720, "plzkthx: Platformer", NULL, NULL);
 
 	if (!window)
 	{
@@ -57,8 +56,6 @@ int main(void)
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 		/* do things here */
-		floor.draw();
-		floor.drawDebug();
 		game.loop();
 		glfwSwapBuffers(window);
 		glfwPollEvents();

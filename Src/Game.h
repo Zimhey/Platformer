@@ -5,9 +5,9 @@
  *      Author: Corey Dixon
  */
 
-#include "Node.h"
+#include "Datastructures/Node.h"
 #include "Obj.h"
-
+#include "Entity.h"
 
 #ifndef GAME_H_
 #define GAME_H_
@@ -18,9 +18,11 @@ public:
 	Game();
 	virtual ~Game();
 	void loop();
+
 private:
+	void addObj(Obj *obj);
+	// TODO add multiple data structures for collision types, e.g. environment, player, enemy
 	Node<Obj> *objects;
-	Obj player;
 };
 
 #endif /* GAME_H_ */
