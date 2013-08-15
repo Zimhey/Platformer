@@ -41,6 +41,9 @@ int main(void)
 		exit(EXIT_FAILURE);
 	}
 
+	// TEMP use constructor for Game
+	game.setWindow(window);
+
 	glfwMakeContextCurrent(window);
 	glfwSetKeyCallback(window, key_callback);
 

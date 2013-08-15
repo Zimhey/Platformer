@@ -9,9 +9,20 @@
 
 Game::Game()
 {
+	window = NULL;
 	objects = NULL;
 	Obj *floor = new Obj(0, 620, 1280, 720);
-	Entity *player = new Entity(640, 360, 64, 128);
+	player = new Entity(640, 360, 64, 128);
+	addObj(floor);
+	addObj(player);
+}
+
+Game::Game(GLFWwindow* window)
+{
+	this->window = window;
+	objects = NULL;
+	Obj *floor = new Obj(0, 620, 1280, 720);
+	player = new Entity(640, 360, 64, 128);
 	addObj(floor);
 	addObj(player);
 }
@@ -29,12 +40,23 @@ Game::~Game()
 
 void Game::loop()
 {
+	// TEMP input stuff
+	if(glfwGetKey(window, 87))	// W
+		player->setY(player->getY() - 5);
+	if(glfwGetKey(window, 65))	// A
+			player->setX(player->getX() - 5);
+	if(glfwGetKey(window, 68))	// D
+				player->setX(player->getX() + 5);
+
+
+
 
 	Node<Obj> *traverseP = objects;
 	while(traverseP != NULL)
 	{
 		traverseP->obj->tick();
-		traverseP->obj->draw();
+		//traverseP->obj->draw();
+		traverseP->obj->drawDebug();
 		traverseP = traverseP->next;
 	}
 }

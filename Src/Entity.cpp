@@ -85,4 +85,7 @@ void Entity::tick()
 {
 	if(health < 1)
 		alive = false;
+	// TEMP gravity
+	if(y + height < 620)
+		y++;
 }
