@@ -71,7 +71,7 @@ void Entity::tick()
 		alive = false;
 	// TEMP gravity
 	if (y + height < 620)
-		y += 5;
+		y += 8;
 	if (y + height > 620)
 		y = 620 - height;
 }

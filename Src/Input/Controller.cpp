@@ -92,7 +92,7 @@ bool Controller::getStart()
 	return buttons[7];
 }
 
-bool Controller::getLeftJoyStickDown()
+bool Controller::getLeftJoyStickPressed()
 {
 	if (!controllerPresent())
 		return false;
@@ -101,7 +101,7 @@ bool Controller::getLeftJoyStickDown()
 	return buttons[8];
 }
 
-bool Controller::getRightJoyStickDown()
+bool Controller::getRightJoyStickPressed()
 {
 	if (!controllerPresent())
 		return false;

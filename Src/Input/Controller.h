@@ -24,8 +24,8 @@ public:
 	bool getRB();
 	bool getBack();
 	bool getStart();
-	bool getLeftJoyStickDown();
-	bool getRightJoyStickDown();
+	bool getLeftJoyStickPressed();
+	bool getRightJoyStickPressed();
 	bool getDUp();
 	bool getDDown();
 	bool getDLeft();

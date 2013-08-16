@@ -50,13 +50,18 @@ void Game::loop()
 
 	if (player != NULL)
 	{
-		double speed = 500 * deltaTime;
+		double speed = 700 * deltaTime;
 		if (input->moveUp())
-			player->setY(player->getY() - speed);
+			player->setY(player->getY() - speed * 2);
 		if (input->moveLeft())
 			player->setX(player->getX() - speed);
 		if (input->moveRight())
 			player->setX(player->getX() + speed);
+
+		if(input->moveDown())
+			player->setHeight(64);
+		else
+			player->setHeight(128);
 	}
 	else
 	{

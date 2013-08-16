@@ -29,7 +29,8 @@ bool Keybinds::moveUp() const
 
 bool Keybinds::moveDown() const
 {
-	return false;
+	return keyboard->getKey(GLFW_KEY_S) | keyboard->getKey(GLFW_KEY_DOWN)
+			| controller->getDDown() | controller->getLeftStickDown();
 }
 
 bool Keybinds::moveLeft() const
