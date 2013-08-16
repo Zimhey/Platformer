@@ -7,14 +7,22 @@
 
 #include "Keyboard.h"
 
-Keyboard::Keyboard()
+Keyboard::Keyboard(GLFWwindow* window)
 {
-	// TODO Auto-generated constructor stub
-
+	this->window = window;
 }
 
 Keyboard::~Keyboard()
 {
-	// TODO Auto-generated destructor stub
+
 }
 
+void Keyboard::setWindow(GLFWwindow* window)
+{
+	this->window = window;
+}
+
+bool Keyboard::getKey(int key) const
+{
+	return glfwGetKey(window, key);
+}

@@ -7,19 +7,10 @@
 
 #include "Game.h"
 
-Game::Game()
-{
-	window = NULL;
-	objects = NULL;
-	Obj *floor = new Obj(0, 620, 1280, 720);
-	player = new Entity(640, 360, 64, 128);
-	addObj(floor);
-	addObj(player);
-}
-
 Game::Game(GLFWwindow* window)
 {
 	this->window = window;
+	input = new Keybinds(window);
 	objects = NULL;
 	Obj *floor = new Obj(0, 620, 1280, 720);
 	player = new Entity(640, 360, 64, 128);
@@ -29,7 +20,7 @@ Game::Game(GLFWwindow* window)
 
 Game::~Game()
 {
-	while(objects != NULL)
+	while (objects != NULL)
 	{
 		Node<Obj> *del = objects;
 		delete del->obj;
@@ -41,21 +32,18 @@ Game::~Game()
 void Game::loop()
 {
 	// TEMP input stuff
-	if(glfwGetKey(window, 87))	// W
+	if (input->moveUp())	// W
 		player->setY(player->getY() - 5);
-	if(glfwGetKey(window, 65))	// A
-			player->setX(player->getX() - 5);
-	if(glfwGetKey(window, 68))	// D
-				player->setX(player->getX() + 5);
-
-
-
+	if (input->moveLeft())	// A
+		player->setX(player->getX() - 5);
+	if (input->moveRight())	// D
+		player->setX(player->getX() + 5);
 
 	Node<Obj> *traverseP = objects;
-	while(traverseP != NULL)
+	while (traverseP != NULL)
 	{
 		traverseP->obj->tick();
-		//traverseP->obj->draw();
+		traverseP->obj->draw();
 		traverseP->obj->drawDebug();
 		traverseP = traverseP->next;
 	}
@@ -63,7 +51,7 @@ void Game::loop()
 
 void Game::addObj(Obj *obj)
 {
-	if(objects == NULL)
+	if (objects == NULL)
 	{
 		objects = new Node<Obj>(obj);
 		return;

@@ -9,6 +9,7 @@
 #include "../Datastructures/Node.h"
 #include "../Obj/Obj.h"
 #include "../Obj/Entity.h"
+#include "../Input/Keybinds.h"
 
 #ifndef GAME_H_
 #define GAME_H_
@@ -16,7 +17,6 @@
 class Game
 {
 public:
-	Game();
 	Game(GLFWwindow* window);
 	virtual ~Game();
 	void loop();
@@ -34,6 +34,7 @@ public:
 private:
 	void addObj(Obj *obj);
 	GLFWwindow* window;
+	Keybinds* input;
 	// TODO add multiple data structures for collision types, e.g. environment, player, enemy
 	Node<Obj> *objects;
 	// TEMP Player

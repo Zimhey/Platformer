@@ -9,12 +9,11 @@
 
 EntityController::EntityController()
 {
-	// TODO Auto-generated constructor stub
 
 }
 
 EntityController::~EntityController()
 {
-	// TODO Auto-generated destructor stub
+
 }
 

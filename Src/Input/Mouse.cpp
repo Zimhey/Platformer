@@ -7,14 +7,33 @@
 
 #include "Mouse.h"
 
-Mouse::Mouse()
+Mouse::Mouse(GLFWwindow* window)
 {
-	// TODO Auto-generated constructor stub
-
+	this->window = window;
+	x = 0;
+	y = 0;
 }
 
 Mouse::~Mouse()
 {
-	// TODO Auto-generated destructor stub
 }
 
+double Mouse::getX() const
+{
+	return x;
+}
+
+double Mouse::getY() const
+{
+	return y;
+}
+
+bool Mouse::getButton(int button) const
+{
+	return glfwGetMouseButton(window, button);
+}
+
+void Mouse::setWindow(GLFWwindow* window)
+{
+	this->window = window;
+}

@@ -8,8 +8,11 @@
 #include <GLFW/glfw3.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <iostream>	// for console debug
 #include "Game/Game.h"
 #include "Obj/Obj.h"
+
+using namespace std;	// for console debug
 
 static void error_callback(int error, const char* description)
 {
@@ -25,15 +28,14 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action,
 
 int main(void)
 {
-	GLFWwindow* window;
-	Game game;
 
 	glfwSetErrorCallback(error_callback);
 
 	if (!glfwInit())
 		exit(EXIT_FAILURE);
 
-	window = glfwCreateWindow(1280, 720, "plzkthx: Platformer", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(1280, 720, "plzkthx: Platformer", NULL, NULL);
+	Game game(window);
 
 	if (!window)
 	{
@@ -41,12 +43,8 @@ int main(void)
 		exit(EXIT_FAILURE);
 	}
 
-	// TEMP use constructor for Game
-	game.setWindow(window);
-
 	glfwMakeContextCurrent(window);
 	glfwSetKeyCallback(window, key_callback);
-
 	while (!glfwWindowShouldClose(window))
 	{
 		int width, height;
@@ -62,6 +60,7 @@ int main(void)
 		game.loop();
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+
 	}
 
 	glfwDestroyWindow(window);
