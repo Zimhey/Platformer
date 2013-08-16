@@ -41,7 +41,7 @@ void Game::loop()
 	// TEMP input stuff
 	if (input->deleteObjs())
 		deleteObjs();
-	if(input->randomObjs())
+	if (input->randomObjs())
 		addRandom();
 	if (input->saveObjs())
 		save();
@@ -110,19 +110,19 @@ void Game::load()
 		int type = -1;
 		ifs >> type;
 		Obj *obj;
-		if(type == 0)
+		if (type == 0)
 		{
 			obj = new Obj();
 			ifs >> *obj;
 			addObj(obj);
 		}
-		else if(type == 1)
+		else if (type == 1)
 		{
 			obj = new Entity();
 			ifs >> *obj;
 			addObj(obj);
 		}
-		else if(type == 2)
+		else if (type == 2)
 		{
 			obj = new Entity();
 			ifs >> *obj;
@@ -142,16 +142,18 @@ void Game::load()
 
 void Game::addRandom()
 {
-	srand (int(glfwGetTime()) % 256);
+	srand(int(glfwGetTime() * glfwGetTime()) % 256);
 	int newObjs = rand() % 4 + 1; // 1-5
-	for(int i = 0; i < newObjs; i++)
+	for (int i = 0; i < newObjs; i++)
 	{
 		Obj *obj;
 		int type = rand() % 2;
 		if (type == 0)
-			obj = new Obj(rand() % 1280, rand() % 640, rand() % 32 + 32, rand() % 64 + 64);
+			obj = new Obj(rand() % 1280, rand() % 640, rand() % 32 + 32,
+					rand() % 64 + 64);
 		if (type == 1)
-			obj = new Entity(rand() % 1280, rand() % 640, rand() % 32 + 32, rand() % 64 + 64);
+			obj = new Entity(rand() % 1280, rand() % 640, rand() % 32 + 32,
+					rand() % 64 + 64);
 		addObj(obj);
 	}
 }
