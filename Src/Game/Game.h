@@ -37,12 +37,15 @@ private:
 	void addRandom();
 	void addObj(Obj *obj);
 	void deleteObjs();
+	void calculateDeltaTime();
+
 	GLFWwindow* window;
 	Keybinds* input;
 	// TODO add multiple data structures for different collision types, e.g. player, enemy, neutral
 	Node<Obj> *objects;
 	// TEMP Player
 	Entity *player;
+	double deltaTime, lastTime;
 };
 
 #endif /* GAME_H_ */

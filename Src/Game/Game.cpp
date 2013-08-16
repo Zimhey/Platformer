@@ -15,6 +15,8 @@ Game::Game(GLFWwindow* window)
 	this->window = window;
 	input = new Keybinds(window);
 	objects = NULL;
+	deltaTime = 0;
+	lastTime = glfwGetTime();
 	Obj *floor = new Obj(0, 620, 1281, 720);
 	player = new Entity(640, 360, 64, 128);
 	player->setType(2);
@@ -35,6 +37,7 @@ Game::~Game()
 
 void Game::loop()
 {
+	calculateDeltaTime();
 	// TEMP input stuff
 	if (input->deleteObjs())
 		deleteObjs();
@@ -47,12 +50,13 @@ void Game::loop()
 
 	if (player != NULL)
 	{
+		double speed = 500 * deltaTime;
 		if (input->moveUp())
-			player->setY(player->getY() - 15);
+			player->setY(player->getY() - speed);
 		if (input->moveLeft())
-			player->setX(player->getX() - 5);
+			player->setX(player->getX() - speed);
 		if (input->moveRight())
-			player->setX(player->getX() + 5);
+			player->setX(player->getX() + speed);
 	}
 	else
 	{
@@ -176,4 +180,10 @@ void Game::deleteObjs()
 		objects = objects->next;
 		delete last;
 	}
+}
+
+void Game::calculateDeltaTime()
+{
+	deltaTime = (glfwGetTime() - lastTime);
+	lastTime = glfwGetTime();
 }
