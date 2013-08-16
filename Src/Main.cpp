@@ -8,8 +8,8 @@
 #include <GLFW/glfw3.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "Game.h"
-#include "Obj.h"
+#include "Game/Game.h"
+#include "Obj/Obj.h"
 
 static void error_callback(int error, const char* description)
 {

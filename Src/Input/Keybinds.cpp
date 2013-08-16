@@ -1,19 +1,19 @@
 /*
- * Controller.cpp
+ * Keybinds.cpp
  *
  *  Created on: Aug 15, 2013
- *      Author: Zim
+ *      Author: Corey Dixon
  */
 
-#include "Controller.h"
+#include "Keybinds.h"
 
-Controller::Controller()
+Keybinds::Keybinds()
 {
 	// TODO Auto-generated constructor stub
 
 }
 
-Controller::~Controller()
+Keybinds::~Keybinds()
 {
 	// TODO Auto-generated destructor stub
 }

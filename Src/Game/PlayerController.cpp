@@ -2,7 +2,7 @@
  * PlayerController.cpp
  *
  *  Created on: Aug 15, 2013
- *      Author: Zim
+ *      Author: Corey Dixon
  */
 
 #include "PlayerController.h"

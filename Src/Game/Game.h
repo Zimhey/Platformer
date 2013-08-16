@@ -6,9 +6,9 @@
  */
 
 #include <GLFW/glfw3.h>
-#include "Datastructures/Node.h"
-#include "Obj.h"
-#include "Entity.h"
+#include "../Datastructures/Node.h"
+#include "../Obj/Obj.h"
+#include "../Obj/Entity.h"
 
 #ifndef GAME_H_
 #define GAME_H_

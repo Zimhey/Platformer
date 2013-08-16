@@ -2,20 +2,20 @@
  * PlayerController.h
  *
  *  Created on: Aug 15, 2013
- *      Author: Zim
+ *      Author: Corey Dixon
  */
 
 #ifndef PLAYERCONTROLLER_H_
 #define PLAYERCONTROLLER_H_
 
-#include "Controller.h"
+#include "EntityController.h"
 
-class PlayerController: public Controller
+class PlayerController: public EntityController
 {
 public:
 	PlayerController();
 	virtual ~PlayerController();
-	// TODO playerController handles input and player information
+	// TODO PlayerController
 };
 
 #endif /* PLAYERCONTROLLER_H_ */
