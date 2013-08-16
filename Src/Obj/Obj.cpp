@@ -13,37 +13,27 @@ Obj::Obj()
 	x = y = z = width = height = type = 0;
 }
 
-Obj::Obj(float x, float y)
+Obj::Obj(float x, float y) :
+		x(x), y(y)
 {
-	this->x = x;
-	this->y = y;
 	z = width = height = type = 0;
 }
 
-Obj::Obj(float x, float y, float z)
+Obj::Obj(float x, float y, float z) :
+		x(x), y(y), z(z)
 {
-	this->x = x;
-	this->y = y;
-	this->z = z;
 	width = height = type = 0;
 }
 
-Obj::Obj(float x, float y, float width, float height)
+Obj::Obj(float x, float y, float width, float height) :
+		x(x), y(y), width(width), height(height)
 {
-	this->x = x;
-	this->y = y;
-	this->width = width;
-	this->height = height;
 	z = type = 0;
 }
 
-Obj::Obj(float x, float y, float z, float width, float height)
+Obj::Obj(float x, float y, float z, float width, float height) :
+		x(x), y(y), z(z), width(width), height(height)
 {
-	this->x = x;
-	this->y = y;
-	this->z = z;
-	this->width = width;
-	this->height = height;
 	type = 0;
 }
 

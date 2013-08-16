@@ -7,61 +7,44 @@
 
 #include "Entity.h"
 
-Entity::Entity()
+Entity::Entity() :
+		Obj()
 {
-	x = y = z = width = height = 0;
 	health = type = 1;
 	alive = true;
 }
 
-Entity::Entity(float x, float y)
+Entity::Entity(float x, float y) :
+		Obj(x, y)
 {
-	this->x = x;
-	this->y = y;
-	z = width = height = 0;
 	health = type = 1;
 	alive = true;
 }
 
-Entity::Entity(float x, float y, float z)
+Entity::Entity(float x, float y, float z) :
+		Obj(x, y, z)
 {
-	this->x = x;
-	this->y = y;
-	this->z = z;
-	width = height = 0;
 	health = type = 1;
 	alive = true;
 }
 
-Entity::Entity(float x, float y, float width, float height)
+Entity::Entity(float x, float y, float width, float height) :
+		Obj(x, y, width, height)
 {
-	this->x = x;
-	this->y = y;
-	this->width = width;
-	this->height = height;
-	z = 0;
 	health = type = 1;
 	alive = true;
 }
 
-Entity::Entity(float x, float y, float z, float width, float height)
+Entity::Entity(float x, float y, float z, float width, float height) :
+		Obj(x, y, z, width, height)
 {
-	this->x = x;
-	this->y = y;
-	this->z = z;
-	this->width = width;
-	this->height = height;
 	health = type = 1;
 	alive = true;
 }
 
-Entity::Entity(float x, float y, float z, float width, float height, int health)
+Entity::Entity(float x, float y, float z, float width, float height, int health) :
+		Obj(x, y, z, width, height)
 {
-	this->x = x;
-	this->y = y;
-	this->z = z;
-	this->width = width;
-	this->height = height;
 	this->health = health;
 	type = 1;
 	alive = true;
