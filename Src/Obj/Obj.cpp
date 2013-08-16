@@ -10,14 +10,14 @@
 
 Obj::Obj()
 {
-	x = y = z = width = height = 0;
+	x = y = z = width = height = type = 0;
 }
 
 Obj::Obj(float x, float y)
 {
 	this->x = x;
 	this->y = y;
-	z = width = height = 0;
+	z = width = height = type = 0;
 }
 
 Obj::Obj(float x, float y, float z)
@@ -25,7 +25,7 @@ Obj::Obj(float x, float y, float z)
 	this->x = x;
 	this->y = y;
 	this->z = z;
-	width = height = 0;
+	width = height = type = 0;
 }
 
 Obj::Obj(float x, float y, float width, float height)
@@ -34,7 +34,7 @@ Obj::Obj(float x, float y, float width, float height)
 	this->y = y;
 	this->width = width;
 	this->height = height;
-	z = 0;
+	z = type = 0;
 }
 
 Obj::Obj(float x, float y, float z, float width, float height)
@@ -44,6 +44,7 @@ Obj::Obj(float x, float y, float z, float width, float height)
 	this->z = z;
 	this->width = width;
 	this->height = height;
+	type = 0;
 }
 
 Obj::~Obj()
@@ -100,6 +101,16 @@ void Obj::setZ(float z)
 	this->z = z;
 }
 
+int Obj::getType() const
+{
+	return type;
+}
+
+void Obj::setType(int type)
+{
+	this->type = type;
+}
+
 void Obj::draw()
 {
 	glPushMatrix();
@@ -107,7 +118,12 @@ void Obj::draw()
 	glTranslated(x, y, z);
 	glBegin(GL_QUADS);
 
-	glColor3f(0.f, 0.5f, 1.f);
+	if (type == 0)
+		glColor3f(0.f, 0.5f, 1.f);
+	else if (type == 1)
+		glColor3f(0.f, 1.f, 0.f);
+	else if (type == 2)
+		glColor3f(1.f, 0.f, 0.f);
 
 	glVertex3d(0, 0, z);
 	glVertex3d(width, 0, z);
@@ -142,3 +158,4 @@ void Obj::tick()
 {
 
 }
+

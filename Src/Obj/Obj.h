@@ -5,6 +5,9 @@
  *      Author: Corey Dixon
  */
 
+#include <fstream>
+#include <iostream>
+
 #ifndef OBJ_H_
 #define OBJ_H_
 
@@ -30,8 +33,34 @@ public:
 	virtual void tick();
 	void draw();
 	void drawDebug();
+
+	// Insertion operator
+	friend std::ostream& operator<<(std::ostream& os, const Obj& obj)
+		{
+			// write out individual members of obj with an end of line between each one
+			os << obj.x << '\n';
+			os << obj.y << '\n';
+			os << obj.z << '\n';
+			os << obj.width << '\n';
+			os << obj.height << '\n';
+			os << obj.type << '\n';
+			return os;
+		}
+
+	// Extraction operator
+	friend std::istream& operator>>(std::istream& is, Obj& obj)
+	{
+		// read in individual members of s
+		is >> obj.x >> obj.y >> obj.z >> obj.width >> obj.height >> obj.type;
+		return is;
+	}
+
+	int getType() const;
+	void setType(int type);
+
 protected:
 	float x, y, z, width, height;
+	int type;
 };
 
 #endif /* OBJ_H_ */

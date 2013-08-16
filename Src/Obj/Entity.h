@@ -5,6 +5,9 @@
  *      Author: Corey Dixon
  */
 
+#include <fstream>
+#include <iostream>
+
 #ifndef ENTITY_H_
 #define ENTITY_H_
 
@@ -25,6 +28,28 @@ public:
 
 	virtual void tick();
 
+	// Insertion operator
+	friend std::ostream& operator<<(std::ostream& os, const Entity& obj)
+		{
+			// write out individual members of obj with an end of line between each one
+			os << obj.x << '\n';
+			os << obj.y << '\n';
+			os << obj.z << '\n';
+			os << obj.width << '\n';
+			os << obj.height << '\n';
+			os << obj.type << '\n';
+			os << obj.health << '\n';
+			os << obj.alive << '\n';
+			return os;
+		}
+
+	// Extraction operator
+	friend std::istream& operator>>(std::istream& is, Entity& obj)
+	{
+		// read in individual members of s
+		is >> obj.x >> obj.y >> obj.z >> obj.width >> obj.height >> obj.type >> obj.health >> obj.alive;
+		return is;
+	}
 protected:
 	int health;
 	bool alive;

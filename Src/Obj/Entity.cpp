@@ -10,7 +10,7 @@
 Entity::Entity()
 {
 	x = y = z = width = height = 0;
-	health = 1;
+	health = type = 1;
 	alive = true;
 }
 
@@ -19,7 +19,7 @@ Entity::Entity(float x, float y)
 	this->x = x;
 	this->y = y;
 	z = width = height = 0;
-	health = 1;
+	health = type = 1;
 	alive = true;
 }
 
@@ -29,7 +29,7 @@ Entity::Entity(float x, float y, float z)
 	this->y = y;
 	this->z = z;
 	width = height = 0;
-	health = 1;
+	health = type = 1;
 	alive = true;
 }
 
@@ -40,7 +40,7 @@ Entity::Entity(float x, float y, float width, float height)
 	this->width = width;
 	this->height = height;
 	z = 0;
-	health = 1;
+	health = type = 1;
 	alive = true;
 }
 
@@ -51,7 +51,7 @@ Entity::Entity(float x, float y, float z, float width, float height)
 	this->z = z;
 	this->width = width;
 	this->height = height;
-	health = 1;
+	health = type = 1;
 	alive = true;
 }
 
@@ -63,6 +63,7 @@ Entity::Entity(float x, float y, float z, float width, float height, int health)
 	this->width = width;
 	this->height = height;
 	this->health = health;
+	type = 1;
 	alive = true;
 }
 
@@ -83,9 +84,11 @@ void Entity::setHealth(int health)
 
 void Entity::tick()
 {
-	if(health < 1)
+	if (health < 1)
 		alive = false;
 	// TEMP gravity
-	if(y + height < 620)
-		y++;
+	if (y + height < 620)
+		y += 5;
+	if (y + height > 620)
+		y = 620 - height;
 }

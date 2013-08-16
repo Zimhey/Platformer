@@ -20,10 +20,18 @@ public:
 	bool moveDown() const;
 	bool moveLeft() const;
 	bool moveRight() const;
+	bool deleteObjs();
+	bool randomObjs();
+	bool saveObjs();
+	bool loadObjs();
 private:	// add custom control support
 	Keyboard* keyboard;
 	Mouse* mouse;
 	Controller* controller;
+	bool saveHeld;
+	bool loadHeld;
+	bool randHeld;
+	bool delHeld;
 };
 
 #endif /* KEYBINDS_H_ */
