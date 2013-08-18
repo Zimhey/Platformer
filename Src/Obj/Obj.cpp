@@ -144,7 +144,7 @@ void Obj::drawDebug()
 	glPopMatrix();
 }
 
-void Obj::tick()
+void Obj::tick(double deltaTime)
 {
 
 }

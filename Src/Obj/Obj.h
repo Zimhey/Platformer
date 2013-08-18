@@ -30,7 +30,7 @@ public:
 	void setY(float y);
 	float getZ() const;
 	void setZ(float z);
-	virtual void tick();
+	virtual void tick(double deltaTime);
 	void draw();
 	void drawDebug();
 

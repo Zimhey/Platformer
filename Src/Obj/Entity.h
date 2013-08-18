@@ -26,7 +26,7 @@ public:
 	int getHealth() const;
 	void setHealth(int health);
 
-	virtual void tick();
+	virtual void tick(double deltaTime);
 
 	// Insertion operator
 	friend std::ostream& operator<<(std::ostream& os, const Entity& obj)

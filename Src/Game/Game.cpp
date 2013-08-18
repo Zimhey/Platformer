@@ -80,7 +80,7 @@ void Game::loop()
 	Node<Obj> *traverseP = objects;
 	while (traverseP != NULL)
 	{
-		traverseP->obj->tick();
+		traverseP->obj->tick(deltaTime);
 		traverseP->obj->draw();
 		//traverseP->obj->drawDebug();
 		traverseP = traverseP->next;
