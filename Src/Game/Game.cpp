@@ -14,13 +14,14 @@ Game::Game(GLFWwindow* window)
 {
 	this->window = window;
 	input = new Keybinds(window);
+	level = new Level();
 	objects = NULL;
 	deltaTime = 0;
 	lastTime = glfwGetTime();
-	Obj *floor = new Obj(0, 620, 1281, 720);
+	//Obj *floor = new Obj(0, 620, 1281, 720);
 	player = new Entity(640, 360, 64, 128);
 	player->setType(2);
-	addObj(floor);
+	//addObj(floor);
 	addObj(player);
 }
 
@@ -38,6 +39,8 @@ Game::~Game()
 void Game::loop()
 {
 	calculateDeltaTime();
+	level->draw();
+
 	// TEMP input stuff
 	if (input->deleteObjs())
 		deleteObjs();
@@ -47,6 +50,10 @@ void Game::loop()
 		save();
 	if (input->loadObjs())
 		load();
+	if (input->click())
+		level->setTile(input->mouseX(), input->mouseY(), 0, 2);
+	if (input->rightClick())
+		level->setTile(input->mouseX(), input->mouseY(), 1, 2);
 
 	if (player != NULL)
 	{
@@ -58,7 +65,7 @@ void Game::loop()
 		if (input->moveRight())
 			player->setX(player->getX() + speed);
 
-		if(input->moveDown())
+		if (input->moveDown())
 			player->setHeight(64);
 		else
 			player->setHeight(128);
@@ -75,13 +82,14 @@ void Game::loop()
 	{
 		traverseP->obj->tick();
 		traverseP->obj->draw();
-		traverseP->obj->drawDebug();
+		//traverseP->obj->drawDebug();
 		traverseP = traverseP->next;
 	}
 }
 
 void Game::save()
 {
+	level->save(); // TEMP
 	int totalObjects = 0;
 	std::ofstream ofs("save.sav");
 	Node<Obj> *traverseP = objects;
@@ -106,6 +114,7 @@ void Game::save()
 
 void Game::load()
 {
+	level->load();	// TEMP
 	deleteObjs();
 	std::ifstream ifs("save.sav");
 	int read = 0;

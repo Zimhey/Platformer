@@ -10,6 +10,7 @@
 #include "../Obj/Obj.h"
 #include "../Obj/Entity.h"
 #include "../Input/Keybinds.h"
+#include "Level.h"
 
 #ifndef GAME_H_
 #define GAME_H_
@@ -39,6 +40,7 @@ private:
 	void deleteObjs();
 	void calculateDeltaTime();
 
+	Level *level;
 	GLFWwindow* window;
 	Keybinds* input;
 	// TODO add multiple data structures for different collision types, e.g. player, enemy, neutral

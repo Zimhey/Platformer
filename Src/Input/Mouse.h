@@ -15,8 +15,8 @@ class Mouse
 public:
 	Mouse(GLFWwindow* window);
 	virtual ~Mouse();
-	double getX() const;
-	double getY() const;
+	double getX();
+	double getY();
 	bool getButton(int button) const;
 	void setWindow(GLFWwindow* window);
 

@@ -105,3 +105,23 @@ bool Keybinds::loadObjs()
 		loadHeld = false;
 	return false;
 }
+
+bool Keybinds::click() const
+{
+	return mouse->getButton(0);
+}
+
+bool Keybinds::rightClick() const
+{
+	return mouse->getButton(1);
+}
+
+int Keybinds::mouseX() const
+{
+	return mouse->getX();
+}
+
+int Keybinds::mouseY() const
+{
+	return mouse->getY();
+}

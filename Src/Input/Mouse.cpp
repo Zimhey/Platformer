@@ -18,13 +18,21 @@ Mouse::~Mouse()
 {
 }
 
-double Mouse::getX() const
+double Mouse::getX()
 {
+	double xx, yy;
+	glfwGetCursorPos(window, &xx, &yy);
+	x = xx;
+	y = yy;
 	return x;
 }
 
-double Mouse::getY() const
+double Mouse::getY()
 {
+	double xx, yy;
+	glfwGetCursorPos(window, &xx, &yy);
+	x = xx;
+	y = yy;
 	return y;
 }
 

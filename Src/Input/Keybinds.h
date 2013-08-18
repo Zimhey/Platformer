@@ -16,6 +16,10 @@ class Keybinds
 public:
 	Keybinds(GLFWwindow* window);
 	virtual ~Keybinds();
+	bool click() const;
+	bool rightClick() const;
+	int mouseX() const;
+	int mouseY() const;
 	bool moveUp() const;
 	bool moveDown() const;
 	bool moveLeft() const;

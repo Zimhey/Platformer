@@ -45,6 +45,9 @@ int main(void)
 
 	glfwMakeContextCurrent(window);
 	glfwSetKeyCallback(window, key_callback);
+
+	//glfwSwapInterval(0); // turn off vSync
+
 	while (!glfwWindowShouldClose(window))
 	{
 		int width, height;
