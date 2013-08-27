@@ -11,6 +11,8 @@
 #include "../Obj/Entity.h"
 #include "../Input/Keybinds.h"
 #include "Level.h"
+#include "EntityController.h"
+#include "PlayerController.h"
 
 #ifndef GAME_H_
 #define GAME_H_
@@ -46,7 +48,7 @@ private:
 	// TODO add multiple data structures for different collision types, e.g. player, enemy, neutral
 	Node<Obj> *objects;
 	// TEMP Player
-	Entity *player;
+	PlayerController *player;
 	double deltaTime, lastTime;
 };
 

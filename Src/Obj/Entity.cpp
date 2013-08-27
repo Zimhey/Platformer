@@ -69,10 +69,5 @@ void Entity::tick(double deltaTime)
 {
 	if (health < 1)
 		alive = false;
-	// TEMP gravity
-	double gravity = 400 * deltaTime;
-	if (y + height < 620)
-		y += gravity;
-	if (y + height > 620)
-		y = 620 - height;
+
 }

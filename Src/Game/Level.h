@@ -5,6 +5,8 @@
  *      Author: Corey Dixon
  */
 
+
+
 #ifndef LEVEL_H_
 #define LEVEL_H_
 
@@ -23,6 +25,8 @@ public:
 	void draw();
 	void save();
 	void load();
+
+	void checkCollision(int x, int y, int width, int height, int *stopL, int *stopR, int *stopB);
 private:
 	int width, height;
 	int tileSize;

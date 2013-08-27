@@ -15,14 +15,11 @@ Game::Game(GLFWwindow* window)
 	this->window = window;
 	input = new Keybinds(window);
 	level = new Level();
+	player = new PlayerController(level, input);
 	objects = NULL;
 	deltaTime = 0;
 	lastTime = glfwGetTime();
-	//Obj *floor = new Obj(0, 620, 1281, 720);
-	player = new Entity(640, 360, 64, 128);
-	player->setType(2);
-	//addObj(floor);
-	addObj(player);
+	//player = new Entity(640, 360, 64, 128);
 }
 
 Game::~Game()
@@ -41,6 +38,8 @@ void Game::loop()
 	calculateDeltaTime();
 	level->draw();
 
+	player->tick(deltaTime);
+
 	// TEMP input stuff
 	if (input->deleteObjs())
 		deleteObjs();
@@ -55,7 +54,7 @@ void Game::loop()
 	if (input->rightClick())
 		level->setTile(input->mouseX(), input->mouseY(), 1, 2);
 
-	if (player != NULL)
+/*	if (player != NULL)
 	{
 		double speed = 700 * deltaTime;
 		if (input->moveUp())
@@ -75,7 +74,7 @@ void Game::loop()
 		player = new Entity(640, 360, 64, 128);
 		player->setType(2);
 		addObj(player);
-	}
+	} */
 
 	Node<Obj> *traverseP = objects;
 	while (traverseP != NULL)
@@ -140,7 +139,7 @@ void Game::load()
 		{
 			obj = new Entity();
 			ifs >> *obj;
-			player = dynamic_cast<Entity*>(obj);
+			//player = dynamic_cast<Entity*>(obj);
 			addObj(obj);
 		}
 		else
@@ -190,8 +189,8 @@ void Game::deleteObjs()
 	while (objects != NULL)
 	{
 		Node<Obj> *last = objects;
-		if (objects->obj == player)
-			player = NULL;
+		/*if (objects->obj == player)
+			player = NULL; */
 		delete objects->obj;
 		objects = objects->next;
 		delete last;

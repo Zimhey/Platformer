@@ -9,13 +9,16 @@
 #define PLAYERCONTROLLER_H_
 
 #include "EntityController.h"
+#include "../Input/Keybinds.h"
 
 class PlayerController: public EntityController
 {
 public:
-	PlayerController();
+	PlayerController(Level *level, Keybinds *input);
 	virtual ~PlayerController();
-	// TODO PlayerController
+	virtual void tick(double deltaTime);
+private:
+	Keybinds *input;
 };
 
 #endif /* PLAYERCONTROLLER_H_ */
