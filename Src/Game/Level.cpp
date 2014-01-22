@@ -13,9 +13,9 @@
 
 Level::Level()
 {
-	tileSize = 64;
-	width = 1280 / tileSize;
-	height = 720 / tileSize;
+	tileSize = 32;
+	width = 160;
+	height = 80;
 	tiles = new int *[width];
 	//srand(2);
 	for (int i = 0; i < width; i++)
@@ -31,7 +31,7 @@ Level::Level()
 
 Level::~Level()
 {
-	// TODO delete tiles
+	clear();
 }
 
 int Level::getHeight() const
@@ -39,7 +39,7 @@ int Level::getHeight() const
 	return height;
 }
 
-void Level::setHeight(int height)
+void Level::setHeight(int height)	// TEMP	level editor only
 {
 	this->height = height;
 }
@@ -49,7 +49,7 @@ int Level::getWidth() const
 	return width;
 }
 
-void Level::setWidth(int width)
+void Level::setWidth(int width)		// TEMP level editor only
 {
 	this->width = width;
 }
@@ -59,38 +59,16 @@ int** Level::getTiles() const
 	return tiles;
 }
 
+
+int Level::getTileSize() const
+{
+	return tileSize;
+}
+
 void Level::setTile(int x, int y, int click, int radius)// TODO implement radius
 {
 	int tile = click * -1;
 	tiles[x / tileSize][y / tileSize] = tile;
-}
-
-void Level::draw()
-{
-	for (int i = 0; i < width; i++)
-		for (int j = 0; j < height; j++)
-		{
-			if (tiles[i][j] != -1)
-			{
-
-				glPushMatrix();
-				glTranslated(i * tileSize, j * tileSize, 0);
-				glBegin(GL_QUADS);
-				if (tiles[i][j] == 1)
-					glColor3f(0.f, 0.f, 1.f);
-				else if (tiles[i][j] == 2)
-					glColor3f(1.f, 0.f, 1.f);
-				else
-					glColor3f(1.f, 1.f, 1.f);
-				glVertex3f(0, 0, 0);
-				glVertex3f(tileSize, 0, 0);
-				glVertex3f(tileSize, tileSize, 0);
-				glVertex3f(0, tileSize, 0);
-				glEnd();
-				glPopMatrix();
-
-			}
-		}
 }
 
 void Level::save()
@@ -118,7 +96,7 @@ void Level::load()
 }
 // separate the fall check from left and right check
 void Level::checkCollision(int x, int y, int width, int height, int* stopL,
-		int* stopR, int *stopB)
+		int* stopR, int *stopB)		// TODO change
 {
 	int xx = x / tileSize;
 	int yy = y / tileSize;
@@ -127,17 +105,17 @@ void Level::checkCollision(int x, int y, int width, int height, int* stopL,
 
 	/*tiles[xx][yy] = 1;
 	 tiles[xx][yh] = 1;*/
-	for(int i = xw; i < this->width; i++)	// right
+	for (int i = xw; i < this->width; i++)	// right
 	{
 		// head
-		if(tiles[i][yy] != -1)
+		if (tiles[i][yy] != -1)
 		{
 			tiles[i][yy] = 2;
 			*stopR = i * tileSize;
 			break;
 		}
 		// feet
-		if(tiles[i][yh] != -1)
+		if (tiles[i][yh] != -1)
 		{
 			tiles[i][yh] = 2;
 			*stopR = i * tileSize;
@@ -145,17 +123,17 @@ void Level::checkCollision(int x, int y, int width, int height, int* stopL,
 		}
 	}
 
-	for(int i = xx; i >= 0; i--)	// left
+	for (int i = xx; i >= 0; i--)	// left
 	{
 		// head
-		if(tiles[i][yy] != -1)
+		if (tiles[i][yy] != -1)
 		{
 			tiles[i][yy] = 2;
 			*stopL = (i + 1) * tileSize;
 			break;
 		}
 		// feet
-		if(tiles[i][yh] != -1)
+		if (tiles[i][yh] != -1)
 		{
 			tiles[i][yh] = 2;
 			*stopL = (i + 1) * tileSize;
@@ -179,4 +157,11 @@ void Level::checkCollision(int x, int y, int width, int height, int* stopL,
 		}
 	}
 
+}
+
+void Level::clear()
+{
+	for (int i = 0; i < width; i++)
+		delete tiles[i];
+	delete tiles;
 }

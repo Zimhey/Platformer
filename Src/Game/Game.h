@@ -7,12 +7,12 @@
 
 #include <GLFW/glfw3.h>
 #include "../Datastructures/Node.h"
-#include "../Obj/Obj.h"
-#include "../Obj/Entity.h"
+#include "Obj/Obj.h"
+#include "Obj/GameObjects/Player.h"
 #include "../Input/Keybinds.h"
 #include "Level.h"
-#include "EntityController.h"
-#include "PlayerController.h"
+#include "Physics.h"
+#include "Render.h"
 
 #ifndef GAME_H_
 #define GAME_H_
@@ -41,14 +41,15 @@ private:
 	void addObj(Obj *obj);
 	void deleteObjs();
 	void calculateDeltaTime();
+	void handleInput();
 
 	Level *level;
 	GLFWwindow* window;
 	Keybinds* input;
-	// TODO add multiple data structures for different collision types, e.g. player, enemy, neutral
 	Node<Obj> *objects;
-	// TEMP Player
-	PlayerController *player;
+
+	Player *player;
+
 	double deltaTime, lastTime;
 };
 

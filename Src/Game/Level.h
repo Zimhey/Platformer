@@ -22,12 +22,14 @@ public:
 	int** getTiles() const;
 	void setTile(int x, int y, int click, int radius);
 
-	void draw();
 	void save();
 	void load();
 
 	void checkCollision(int x, int y, int width, int height, int *stopL, int *stopR, int *stopB);
+	int getTileSize() const;
+
 private:
+	void clear();
 	int width, height;
 	int tileSize;
 	int **tiles;

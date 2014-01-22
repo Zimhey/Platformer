@@ -10,7 +10,6 @@
 #include <stdio.h>
 #include <iostream>	// for console debug
 #include "Game/Game.h"
-#include "Obj/Obj.h"
 
 using namespace std;	// for console debug
 

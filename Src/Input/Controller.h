@@ -43,7 +43,7 @@ public:
 	bool getRightTrigger();
 private:
 	GLFWwindow* window;
-	bool controllerPresent();	// TODO allow multiple controllers for co op?
+	bool controllerPresent();	// COOP add multiple controllers
 };
 
 #endif /* CONTROLLER_H_ */
