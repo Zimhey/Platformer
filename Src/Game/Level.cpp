@@ -13,7 +13,7 @@
 
 Level::Level()
 {
-	tileSize = 16;
+	tileSize = 32;
 	width = 160;
 	height = 80;
 	tiles = new int *[width];
